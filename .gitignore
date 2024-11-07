@@ -1,0 +1,7 @@
+# Ignore node_modules folder
+node_modules/
+
+# Other ignored files
+.env
+dist/
+build/
