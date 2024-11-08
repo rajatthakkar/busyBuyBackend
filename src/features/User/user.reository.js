@@ -4,7 +4,7 @@ export default class UserRepo {
     async signup(userInformation) {
         console.log("In repo Password",userInformation)
         try {
-            const existingUser = await User.findOne({ email: userInformation.email });
+            const existingUser = await UserModel.findOne({ email: userInformation.email });
             console.log("check",existingUser)
             if (existingUser) {
               throw new Error("User with this email already exists");
