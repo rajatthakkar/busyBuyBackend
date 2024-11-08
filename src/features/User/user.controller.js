@@ -19,9 +19,9 @@ export default class UserController {
   // SignUp function
   async signUp(req, res) {
     console.log("in controller", req.body)
-    const { userName, email, password } = req.body
+    const { name, email, password } = req.body
     try {
-      const result = this.userRepo.signup({ userName, email, password })
+      const result = this.userRepo.signup({ name, email, password })
       // Simulate sign-up logic (e.g., creating a new user in the database)
       if (!result) {
         res.status(201).json({ message: 'Sign-up Failed' });
