@@ -7,7 +7,7 @@ userRoutes.get('/login',(req,res)=>{
          userController.logIn(req,res)
 })
 userRoutes.get('/signUn',(req,res)=>{
-               userController.signIn(req,res)
+               userController.signUp(req,res)
 })
 userRoutes.get('/logout',(req,res)=>{
       userController.logout(req,res)

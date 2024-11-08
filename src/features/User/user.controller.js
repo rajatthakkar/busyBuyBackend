@@ -3,18 +3,13 @@ export default class UserController {
     constructor() {
         this.userRepo = new UserRepo()
     }
-  
-    // LogIn function
+    
     async logIn(req, res) {
-        const {userName,password}=req.body
+      const {userName,password}=req.body
       try {
         const result = this.userRepo.login({userName,password})
-        // Simulate the login logic (e.g., validating user credentials)
-        // Replace this with actual login logic (e.g., checking database or JWT)
         console.log("Login attempt");
-  
-        // Example: If login is successful
-        res.status(200).json({ message: 'Login successful' });
+        res.status(200).json(result);
       } catch (error) {
         console.error('Error during login:', error);
         res.status(500).json({ message: 'An error occurred during login', error: error.message });
@@ -42,7 +37,6 @@ export default class UserController {
       try {
         // Simulate logout logic (e.g., clearing sessions or tokens)
         console.log("Logout attempt");
-  
         // Example: If logout is successful
         res.status(200).json({ message: 'Logout successful' });
       } catch (error) {
