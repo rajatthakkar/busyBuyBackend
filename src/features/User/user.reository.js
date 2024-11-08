@@ -4,6 +4,11 @@ export default class UserRepo {
     async signup(userInformation) {
         console.log("In repo Password",userInformation)
         try {
+            const existingUser = await User.findOne({ email: userInformation.email });
+            console.log("check",existingUser)
+            if (existingUser) {
+              throw new Error("User with this email already exists");
+            }
             const result = new UserModel(userInformation);
             await result.save();  // Save user information to the database
             return { success: true, data:"User Ragistured successfully" };  // Return saved user data
