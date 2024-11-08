@@ -5,9 +5,10 @@ export default class UserController {
   }
 
   async logIn(req, res) {
-    const { userName, password } = req.body
+    const { email, password } = req.body
     try {
-      const result = this.userRepo.login({ userName, password })
+      const result =  await this.userRepo.login( email, password )
+    console.log("result",result)
       console.log("Login attempt");
       res.status(200).json(result);
     } catch (error) {
@@ -21,7 +22,7 @@ export default class UserController {
     console.log("in controller", req.body)
     const { name, email, password } = req.body
     try {
-      const result = this.userRepo.signup({ name, email, password })
+      const result = await this.userRepo.signup({ name, email, password })
       // Simulate sign-up logic (e.g., creating a new user in the database)
       if (!result) {
         res.status(201).json({ message: 'Sign-up Failed' });

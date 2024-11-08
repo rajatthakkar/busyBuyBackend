@@ -18,18 +18,21 @@ export default class UserRepo {
         }
     }
 
-    async login(loginCredential) {
+    async login(email,password) {
+        console.log("email and password",email,password)
         try {
-            // Find user by email
-            const user = await UserModel.findOne({ email: loginCredential.email });
+            const user = await UserModel.findOne({ email });
+            console.log
             if (!user) {
-                throw new Error("User not found");
+              return { message: 'User not found' }
             }
-
-            // Here, add password comparison logic if passwords are hashed
-            // For example, using bcrypt: bcrypt.compare(loginCredential.password, user.password)
-
-            return { success: true, data: user };  // Return user data on successful login
+            // Check if the provided password is correct
+           
+            // Return a success message and user details
+            return {
+              message: 'Sign-in successful',
+              user: { id: user._id, userName: user.userName, email: user.email },
+            }    
         } catch (error) {
             console.error("Error in login:", error);
             throw new Error("Login failed");
