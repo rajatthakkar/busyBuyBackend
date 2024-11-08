@@ -2,6 +2,7 @@ import UserModel from "./user.modal.js";
 
 export default class UserRepo {
     async signup(userInformation) {
+        console.log("In repo Password",userInformation)
         try {
             const result = new UserModel(userInformation);
             await result.save();  // Save user information to the database

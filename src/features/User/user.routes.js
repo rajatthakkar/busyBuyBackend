@@ -6,7 +6,7 @@ const userRoutes = express.Router()
 userRoutes.get('/login',(req,res)=>{
          userController.logIn(req,res)
 })
-userRoutes.get('/signUn',(req,res)=>{
+userRoutes.post('/signup',(req,res)=>{
                userController.signUp(req,res)
 })
 userRoutes.get('/logout',(req,res)=>{
