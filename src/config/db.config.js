@@ -6,6 +6,7 @@ const connectMongooseDB = async () => {
   const dbURI = process.env.DB_Link;
   try {
     // Establish the connection
+    console.log("dbURI",dbURI)
     await mongoose.connect(dbURI); // No additional options needed for MongoDB 4+
     console.log('MongoDB connected successfully');
   } catch (err) {
